@@ -1,0 +1,177 @@
+<ng-include src="'navbar.html'"></ng-include>
+<div class="container-fluid page-body-wrapper">
+  <ng-include src="'sidebar.html'"></ng-include>
+  <div class="main-panel">
+    <div class="content-wrapper" ng-controller="OnayBekleyenlerCtrl as obctrl">
+      <style>
+        .ng-table-pagination {
+          float: right !important;
+        }
+
+        .avatarImg:hover img {
+          transform: scale(5);
+          position: relative;
+          left: 100%;
+          bottom: 100%;
+          z-index: 999;
+        }
+      </style>
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Onay Bekleyen Başvurular</h4>
+              <div class="table-responsive">
+                <table ng-table="tableParams" class="table table-striped" show-filter="true">
+                  <tr ng-repeat="user in $data">
+                    <td title="'Fotoğraf'" class="py-1">
+                      <a class="avatarImg"><img ng-if="user.Avatar" src="data:{{user.AvatarFormat}};base64, {{user.Avatar}}"/></a>
+                      <img ng-if="!user.Avatar" src="lib/admin/images/faces-clipart/pic-1.png"/>
+                    </td>
+                    <td title="'Ad'" class="text-capitalize" filter="{Name: 'text'}" sortable="'Name'">
+                      {{user.Name}}
+                    </td>
+                    <td title="'Soyad'" class="text-capitalize" filter="{Soyad: 'text'}" sortable="'Soyad'">
+                      {{user.Surname}}
+                    </td>
+                    <td title="'Referans'" class="text-capitalize" filter="{Referans: 'text'}" sortable="'Referans'">
+                      {{user.Referans}}
+                    </td>
+                    <td title="'LYS Puanı'" filter="{LYSResultScore: 'number'}" sortable="'LYSResultScore'">
+                      {{user.LYSResultScore}}
+                    </td>
+                    <td title="'Üniversite'" filter="{UniversityName: 'text'}" sortable="'UniversityName'">
+                      {{user.UniversityName}}
+                    </td>
+                    <td title="'Ortalama'" filter="{Ortalama: 'number'}" sortable="'Ortalama'">
+                      {{user.Ortalama}}
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-success" ng-click="obctrl.setSelectedUser(user);" onclick="triggerTab('#kisisel');"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="modal"
+                                data-target="#bursiyerViewModal">
+                          Görüntüle
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="bursiyerViewModal" tabindex="-1" role="dialog" aria-labelledby="bursiyerViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="kisiselBtn" onclick="triggerTab('#kisisel');" ng-click="obctrl.getBursiyerKisisel();"
+                     data-toggle="tab" role="tab" aria-controls="kisisel" aria-selected="true">
+                    Kişisel Bilgiler
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="egitimBtn" onclick="triggerTab('#egitim');" ng-click="obctrl.getBursiyerEgitim();"
+                     data-toggle="tab" role="tab" aria-controls="egitim" aria-selected="false">
+                    Eğitim Bilgileri</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="aileBtn" onclick="triggerTab('#aile')" ng-click="obctrl.getBursiyerAile();"
+                     data-toggle="tab" role="tab" aria-controls="aile" aria-selected="false">
+                    Aile Bilgileri
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="maliBtn" onclick="triggerTab('#mali')" ng-click="obctrl.getBursiyerMali();"
+                     data-toggle="tab" role="tab" aria-controls="mali" aria-selected="false">
+                    Mali Bilgiler
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="belgeBtn" onclick="triggerTab('#belge')" ng-click="obctrl.getBursiyerBelge();"
+                     data-toggle="tab" role="tab" aria-controls="belge" aria-selected="false">
+                    Belgeler
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="gecmisBursBtn" onclick="triggerTab('#gecmisBurs')" ng-click="obctrl.getBursiyerGecmisBurs();"
+                     data-toggle="tab" role="tab" aria-controls="gecmisBurs" aria-selected="false">
+                    Geçmiş Bursları
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="kisisel" role="tabpanel" aria-labelledby="kisisel-tab">
+                  <ng-include src="'basvurular/kisisel.html'"></ng-include>
+                </div>
+                <div class="tab-pane fade" id="egitim" role="tabpanel" aria-labelledby="egitim-tab">
+                  <ng-include src="'basvurular/egitim.html'"></ng-include>
+                </div>
+                <div class="tab-pane fade" id="aile" role="tabpanel" aria-labelledby="aile-tab">
+                  <ng-include src="'basvurular/aile.html'"></ng-include>
+                </div>
+                <div class="tab-pane fade" id="mali" role="tabpanel" aria-labelledby="mali-tab">
+                  <ng-include src="'basvurular/mali.html'"></ng-include>
+                </div>
+                <div class="tab-pane fade" id="belge" role="tabpanel" aria-labelledby="belge-tab">
+                  <ng-include src="'basvurular/belge.html'"></ng-include>
+                </div>
+                <div class="tab-pane fade" id="gecmisBurs" role="tabpanel" aria-labelledby="gecmis-burs-tab">
+                  <ng-include src="'basvurular/gecmisBurs.html'"></ng-include>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" ng-click="obctrl.deniedUser();">Reddet</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bursMiktariModal">Bursu Onayla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="bursMiktariModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5>Burs Miktarı</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="bursMiktariModalBody">
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label text-uppercase">{{selectedUser.Name}} adlı bursiyere verilecek burs miktarı:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" ng-model="bursMiktari" placeholder="Örn: 1000">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+              <button type="button" class="btn btn-success" id="bursMiktariOnayBtn" ng-click="obctrl.confirmUser();">Onayla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function triggerTab(btnId) {
+            $(".nav-tabs .active, .tab-content .active").removeClass("active");
+            $(btnId + "Btn").addClass('active');
+            $(btnId).addClass('show active');
+        }
+    </script>
+    <ng-include src="'footer.html'"></ng-include>
+  </div>
+</div>

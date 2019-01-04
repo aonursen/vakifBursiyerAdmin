@@ -1,0 +1,23 @@
+<div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+  <div class="card-body">
+    <h4 class="card-title">Geçmiş Burs Bilgileri</h4>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Burs Yılı</th>
+            <th>Burs Miktarı</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="gecmis in gecmisBursData">
+            <td>{{gecmis.OnayTarihi|date: 'yyyy'}}</td>
+            <td>{{gecmis.BursMiktari}} &#x20BA;</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

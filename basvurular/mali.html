@@ -1,0 +1,143 @@
+<div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+  <div class="card-body">
+    <h4 class="card-title">Mali Bilgiler</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Adı:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{selectedUser.Name}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Soyadı:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{selectedUser.Surname}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Öğrenci'nin Kaldığı Yerin Kira Bedeli:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.StdRentCost}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Baba'nın Yıllık Geliri</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.FatherYearlySalary}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Anne'nin Yıllık Geliri</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.MotherYearlySalary}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Diğer Yıllık Gelirler</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.OtherYearlySalary}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Toplam Yıllık Gelir</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.TotalYearlySalary}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Aile'nin Sahip Olduğu Gayrimenkuller</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentPlaces ? maliData.ParentPlaces : null}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Aile'nin Kaldığı Ev Size Mi Ait ?</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentHouseIsYours == true ? 'Evet' : 'Hayır'}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" ng-if="maliData.ParentHouseIsYours == true">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Evin Değeri</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentHouseValue}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" ng-if="maliData.ParentHouseIsYours == false">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Evin Kira Bedeli</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentHouseRentCost}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Aile'nin Aracı Var Mı ?</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentHasCar == true ? 'Evet' : 'Hayır'}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" ng-if="maliData.ParentHasCar == true">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Aracın Marka/Modeli</label>
+          <div class="col-sm-9">
+            <textarea type="text" class="form-control" disabled>{{maliData.ParentCarModel}}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" ng-if="maliData.ParentHasCar == true">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Aracın Yılı</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.ParentCarYear}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Bursun Yatacağı Banka</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.Bank.BankName}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Hesap Sahibi Adı Soyadı</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.BankAccOwnerNameSurname}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">IBAN</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{maliData.BankIban}}" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

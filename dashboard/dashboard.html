@@ -1,0 +1,166 @@
+<ng-include src="'navbar.html'"></ng-include>
+<div class="container-fluid page-body-wrapper">
+  <ng-include src="'sidebar.html'"></ng-include>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account-plus text-danger icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Toplam Başvuru</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{dashboardData.Toplam}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-account text-success icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Bursiyer Sayısı</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{dashboardData.Onaylananlar}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-close text-warning icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Red Sayısı</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{dashboardData.RedOlanlar}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="card card-statistics">
+            <div class="card-body">
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="mdi mdi-clock text-info icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <p class="mb-0 text-right">Ön Onay Sayısı</p>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{dashboardData.OnayBekleyenler}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-7 grid-margin stretch-card">
+          <!--weather card-->
+          <div class="card card-weather">
+            <div class="card-body">
+              <div class="weather-date-location">
+                <h3>{{forecastDays[0].date|date: 'EEEE'}}</h3>
+                <p class="text-gray">
+                  <span class="weather-date">{{currentWeather.last_updated}}</span>
+                  <span class="weather-date-location">İstanbul, Türkiye</span>
+                </p>
+              </div>
+              <div class="weather-data d-flex">
+                <div class="mr-auto">
+                  <img src="{{currentWeather.condition.icon}}">
+                  <h4 class="display-3">{{currentWeather.temp_c}}
+                    <span class="symbol">&deg;</span>C</h4>
+                  <p>
+                    {{currentWeather.condition.text}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="d-flex weakly-weather">
+                <div class="weakly-weather-item" ng-repeat="day in forecastDays">
+                  <p class="mb-0">
+                    {{day.date|date: 'EEE'}}
+                  </p>
+                  <img src="{{day.day.condition.icon}}">
+                  <p class="mb-0">
+                    {{day.day.avgtemp_c}}°
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-primary mb-5">Bursiyer Eğitim Durumları</h2>
+              <div class="wrapper">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Ön Lisans</p>
+                  <p class="mb-2 text-primary">{{dashboardData.Onlisans}}%</p>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{dashboardData.Onlisans}}%"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="wrapper mt-4">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Lisans</p>
+                  <p class="mb-2 text-success">{{dashboardData.Lisans}}%</p>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{dashboardData.Lisans}}%"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="wrapper mt-4">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">1. Öğretim</p>
+                  <p class="mb-2 text-success">{{dashboardData.BOgretim}}%</p>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{dashboardData.BOgretim}}%"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="wrapper mt-4">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">2. Öğretim</p>
+                  <p class="mb-2 text-success">{{dashboardData.IOgretim}}%</p>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{dashboardData.IOgretim}}%"
+                       aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-include src="'footer.html'"></ng-include>
+  </div>
+</div>

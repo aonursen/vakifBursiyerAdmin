@@ -1,0 +1,135 @@
+  <div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+    <div class="card-body">
+      <h4 class="card-title">Kişisel Bilgiler</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Adı:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{selectedUser.Name}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Soyadı:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{selectedUser.Surname}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Uyruk:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.Nationality}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Doğum Tarihi</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.BirthDate|date:'dd/M/yyyy'}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Doğum Yeri</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.BirthPlace}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Cinsiyet</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.Gender}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nüfusa Kayıtlı Olduğu İl</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.City1.CityName}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nüfusa Kayıtlı Olduğu İlçe</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.Town1.TownName}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Medeni Durumu</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.MaritalStatus}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Özel Durumu</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.SpecialStatus ? kisiselData.SpecialStatus : 'VERİ YOK'}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Bedensel Engel</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.HandikapPerson ? kisiselData.HandikapPerson : 'VERİ YOK'}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Engel Yüzdesi</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.HandikapPercentage ? kisiselData.HandikapPercentage : 'VERİ YOK'}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">İkamet Adresi</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" disabled>{{kisiselData.StdAddress}}</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Referans</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.Referans}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">İkamet Ettiği İl</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.City2.CityName}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">İkamet Ettiği İlçe</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{kisiselData.Town2.TownName}}" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

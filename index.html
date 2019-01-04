@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gürsoy Vakfı Bursiyer Sistemi Admin</title>
+    <link rel="stylesheet" href="lib/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="lib/admin/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="lib/admin/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="lib/admin/css/style.css">
+    <link rel="stylesheet" href="lib/ng-table/bundles/ng-table.min.css">
+    <link rel="stylesheet" href="lib/sweetalert/sweetalert.css">
+    <link rel="shortcut icon" href="lib/admin/images/favicon.png"/>
+</head>
+
+<body ng-app="gursoyVakfiAdmin">
+<div class="container-scroller" ng-controller="IndexCtrl">
+    <ng-view></ng-view>
+    <div class="modal fade" id="sifreDegisModal" tabindex="-1" role="dialog" aria-labelledby="sifreDegisModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Şifre Değiştir</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="sifre-form" name="sifreForm" class="mt-4" ng-submit="sifreForm.$valid && passwordSbmt($event)">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="sifre-addon">Şifreniz</span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Kullanmakta olduğunuz şifrenizi giriniz."
+                                           ng-class="{'is-invalid': sifreFormError.Password}"
+                                           aria-label="Ad" aria-describedby="sifre-addon" name="Password" required
+                                           ng-model="sifreFormData.Password" ng-required="true">
+                                    <div ng-if="sifreFormError.Password" ng-repeat="err in sifreFormError.Password" class="invalid-feedback">
+                                        {{err}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="yeni-sifre-addon">Yeni Şifre</span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Yeni şifrenizi giriniz."
+                                           ng-class="{'is-invalid': sifreFormError.NewPassword || sifreFormData.NewPassword != sifreFormData.ReNewPassword}"
+                                           aria-label="Yeni Şifre"
+                                           aria-describedby="yeni-sifre-addon" name="Surname" required
+                                           ng-model="sifreFormData.NewPassword" ng-required="true">
+                                    <div ng-if="sifreFormError.NewPassword" ng-repeat="err in sifreFormError.NewPassword" class="invalid-feedback">
+                                        {{err}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="yeni-sifre-tekrar-addon">Yeni Şifre Tekrar</span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Yeni şifrenizi tekrar giriniz."
+                                           ng-class="{'is-invalid': sifreFormError.ReNewPassword || sifreFormData.NewPassword != sifreFormData.ReNewPassword}"
+                                           aria-label="Yeni Şifre Tekrar"
+                                           aria-describedby="Email-addon" name="ReNewPassword" required
+                                           ng-model="sifreFormData.ReNewPassword" ng-required="true">
+                                    <div ng-if="sifreFormError.ReNewPassword" ng-repeat="err in sifreFormError.ReNewPassword" class="invalid-feedback">
+                                        {{err}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button ng-disabled="sifreForm.$invalid || sifreFormData.NewPassword != sifreFormData.ReNewPassword"
+                                        type="submit" class="btn btn-danger">Güncelle
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="viewDocModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Dosya Görüntüleme</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="viewDocModalBody"></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="msgModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location.reload();">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/admin/vendors/js/vendor.bundle.base.js"></script>
+<script src="lib/admin/vendors/js/vendor.bundle.addons.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-locale_tr-tr.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+<script src="lib/ng-table/bundles/ng-table.min.js"></script>
+<script src="lib/angular-jwt/angular-jwt.js"></script>
+<script src="lib/sweetalert/sweetalert.min.js"></script>
+<script src="lib/ng-sweet-alert/ng-sweet-alert.min.js"></script>
+<!--<script src="lib/ckeditor/ckeditor.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ng.ckeditor/2.0.4/ng-ckeditor.min.js"></script>-->
+<script src="app.js"></script>
+<script src="login/login.js"></script>
+<script src="dashboard/dashboard.js"></script>
+<script src="basvurular/basvurular.js"></script>
+<script src="core/globs.js"></script>
+<script src="core/userProfile.js"></script>
+<script src="core/version/version.js"></script>
+<script src="core/version/version-directive.js"></script>
+<script src="core/version/interpolate-filter.js"></script>
+</body>
+
+</html>

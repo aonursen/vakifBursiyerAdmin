@@ -1,0 +1,235 @@
+  <div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+    <div class="card-body">
+      <h4 class="card-title">Eğitim Bilgileri</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Adı:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{selectedUser.Name}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Soyadı:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{selectedUser.Surname}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile'nin Yaşadığı İl:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.City.CityName}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile'nin Yaşadığı İlçe</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.Town.TownName}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba Yaşıyor Mu ?</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherIsLiving == true ? 'Evet' : 'Hayır'}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == false">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın Ölüm Yılı </label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherDeadYear}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın Adı Soyadı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherNameSurname ? aileData.FatherNameSurname : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın T.C No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherTcNo ? aileData.FatherTcNo : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın Eğitim Durumu</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherGraduateStatus ? aileData.FatherGraduateStatus : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba Çalışıyor Mu ?</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherIsWorking == true ? 'Evet' : 'Hayır'}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın Mesleği</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherJob ? aileData.FatherJob : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın İş Adresi</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherWorkAddress ? aileData.FatherWorkAddress : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.FatherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Baba'nın Son Çalıştığı İş</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.FatherLastPosition ? aileData.FatherLastPosition : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne Yaşıyor Mu ?</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherIsLiving == true ? 'Evet' : 'Hayır'}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == false">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin Ölüm Yılı </label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherDeadYear}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin Adı Soyadı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherNameSurname ? aileData.MotherNameSurname : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin T.C No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherTcNo ? aileData.MotherTcNo : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin Eğitim Durumu</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherGraduateStatus ? aileData.MotherGraduateStatus : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne Çalışıyor Mu ?</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherIsWorking == true ? 'Evet' : 'Hayır'}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin Mesleği</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherJob ? aileData.MotherJob : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin İş Adresi</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherWorkAddress ? aileData.MotherWorkAddress : null}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-if="aileData.MotherIsLiving == true">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Anne'nin Son Çalıştığı İş</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.MotherLastPosition ? aileData.MotherLastPosition : null}}" disabled>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile'den Sorumlu Kişi</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.ParentLeader}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile'nin Durumu</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.ParentStatus == true ? 'Evli' : 'Bekar'}}" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Toplam Kardeş Sayısı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.BroSum}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Okuyan Kardeş Sayısı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.BroSumStudy}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile İle Yaşayan Kardeş Sayısı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.BroSumInParentHouse}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Aile'den Sorumlu Kişinin Baktığı Kişi Sayısı</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="{{aileData.ParentLeaderRespPersonSum}}" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

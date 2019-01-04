@@ -1,0 +1,71 @@
+<div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+  <div class="card-body">
+    <h4 class="card-title">Belgeler</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Adı:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{selectedUser.Name}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Soyadı:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" value="{{selectedUser.Surname}}" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Vesikalık Fotoğraf:</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.UserAvatar" ng-click="viewDoc('UserAvatar')" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Nüfus Cüzdanı Ön Arka</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.IdentityCardDoc" ng-click="viewDoc('IdentityCardDoc');" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Vukuatlı Nüfus Kayıt Örneği</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.VukuatliNufusKayit" ng-click="viewDoc('VukuatliNufusKayit')" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">LYS Sonuç Belgesi</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.LYSResultDoc" ng-click="viewDoc('LYSResultDoc')" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Transkript Belgesi</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.StdTranscript" ng-click="viewDoc('StdTranscript')" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Disiplin Durum Belgesi</label>
+          <div class="col-sm-9">
+            <button ng-if="belgeData.DisciplineStatusDoc" ng-click="viewDoc('DisciplineStatusDoc')" class="btn btn-success">Görüntüle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

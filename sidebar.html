@@ -1,0 +1,148 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="lib/admin/images/faces-clipart/pic-1.png" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">Gürsoy Vakfı Admin</p>
+            <div>
+              <small class="designation text-muted">Yönetici</small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success btn-block" data-toggle="modal" data-target="#mailModal">Mail Gönder
+          <i class="mdi mdi-plus"></i>
+        </button>
+        <button class="btn btn-info btn-block" data-toggle="modal" data-target="#smsModal">SMS Gönder
+          <i class="mdi mdi-plus"></i>
+        </button>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="dashboard">
+        <i class="menu-icon mdi mdi-television"></i>
+        <span class="menu-title">Yönetim Ekranı</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="basvurular">
+        <i class="menu-icon mdi mdi-account-plus"></i>
+        <span class="menu-title">Başvurular</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="onay-bekleyenler">
+        <i class="menu-icon mdi mdi-clock"></i>
+        <span class="menu-title">Onay Bekleyenler</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="red-olanlar">
+        <i class="menu-icon mdi mdi-close"></i>
+        <span class="menu-title">Red Olanlar</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="onaylananlar">
+        <i class="menu-icon mdi mdi-account-check"></i>
+        <span class="menu-title">Onaylananlar</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" ui-sref="tum-basvurular">
+        <i class="menu-icon mdi mdi-account-multiple"></i>
+        <span class="menu-title">Tüm Başvurular</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mailModalLabel">Mail Gönder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+        <div class="form-group">
+          <label for="sendEmailTo">Gönderilecek Kişi/Kişiler</label>
+          <select class="form-control" name="sendEmailTo" id="sendEmailTo" required
+                  ng-model="sendEmailData.Type">
+            <option value="Herkes">Tüm Bursiyerler</option>
+            <option value="Onaylilar">Onaylanmış Bursiyerler</option>
+            <option value="Belirli">Belirli Bir Bursiyere</option>
+          </select>
+        </div>
+        <div class="form-group" ng-if="sendEmailData.Type == 'Belirli'">
+          <label for="selectedUser">Gönderilecek Bursiyer</label>
+          <select class="form-control" name="selectedUser" id="selectedUser"
+                  ng-model="sendEmailData.User">
+            <option value="UserId">Arif Onur Şen</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sendEmailSubject">E-Mail Başlığı</label>
+          <input type="text" class="form-control" id="sendEmailSubject" placeholder="E-mail Başlığı">
+        </div>
+        <div class="form-group">
+          <label for="sendEmailMessage">E-Mail Mesajı</label>
+          <textarea class="form-control" id="sendEmailMessage" placeholder="E-Mail İçeriği" rows="8"></textarea>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+        <button type="button" class="btn btn-success">Gönder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog" aria-labelledby="smsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="smsModalLabel">SMS Gönder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="sendSmsTo">Gönderilecek Kişi/Kişiler</label>
+            <select class="form-control" name="sendSmsTo" id="sendSmsTo" required
+                    ng-model="sendSmsData.Type">
+              <option value="Herkes">Tüm Bursiyerler</option>
+              <option value="Onaylilar">Onaylanmış Bursiyerler</option>
+              <option value="Belirli">Belirli Bir Bursiyere</option>
+            </select>
+          </div>
+          <div class="form-group" ng-if="sendSmsData.Type == 'Belirli'">
+            <label for="selectedUser">Gönderilecek Bursiyer</label>
+            <select class="form-control" name="selectedUser" id="selectedUser"
+                    ng-model="sendSmsData.User">
+              <option value="UserId">Arif Onur Şen</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sendSmsMessage">Sms Mesajı</label>
+            <textarea class="form-control" rows="8" name="sendSmsMessage" id="sendSmsMessage" placeholder="Sms mesaj içeriğini giriniz"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+        <button type="button" class="btn btn-success">Gönder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
